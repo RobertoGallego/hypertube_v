@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Link, Switch, BrowserRouter as Router} from 'react-router-dom';
-import SignIn from './signin/container/signin';
+import SignIn from './components/SignIn';
 import ExampleApp from './exampleApp';
 
 export default class App extends React.Component {
