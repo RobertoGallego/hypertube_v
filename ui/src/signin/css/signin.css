@@ -21,19 +21,19 @@
   flex-direction: column;
 }
 
-.header img {
+/* .header img {
   margin: 1rem 2rem;
-}
+} */
 
 .main {
-  box-sizing: border-box;
+  /* box-sizing: border-box;
   width: 28rem;
   margin: 2rem auto 10rem;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
   padding: 3rem 4.5rem 2rem;
   border-radius: 3px;
 
-  flex: 1;
+  flex: 1; */
 }
 
 .footer {
