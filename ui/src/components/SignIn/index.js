@@ -1,8 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import logoTop from '../../img/logo-top.png';
-import './css/signin.css';
-// import { SocialIcon } from 'react-social-icons';
 import Header from './header';
 import Formin from './form';
 import Footer from './footer';

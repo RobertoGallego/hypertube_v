@@ -14,7 +14,7 @@ const Main = styled.main`
 `
 
 const Form = styled.form`
-    & H1 {
+    & h1 {
         margin: 0 0 2rem 0;
         color: white;
     }
@@ -25,7 +25,7 @@ const Input = styled.input`
     border: 0;
     border-radius: 5px;
     color: #fff;
-    padding: 0.9rem;
+    padding: 0.9rem 0;
     text-align: center;
     text-decoration: none;
     display: inline-block;
