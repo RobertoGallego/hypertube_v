@@ -26,7 +26,7 @@ const Input = styled.input`
     border-radius: 5px;
     color: #fff;
     padding: 0.9rem 0;
-    text-align: center;
+    text-indent: 1rem;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
@@ -34,6 +34,10 @@ const Input = styled.input`
     cursor: default;
     outline: 0;
     width: 100%;
+    ::placeholder {
+        text-align: center;
+        text-indent: -0.1rem;
+    }
 `
 
 const Button = styled.button`

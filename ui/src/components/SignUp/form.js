@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { SocialIcon } from 'react-social-icons';
 
 const Main = styled.main`
     box-sizing: border-box;
@@ -25,7 +26,7 @@ const Input = styled.input`
     border-radius: 5px;
     color: #fff;
     padding: 0.9rem 0;
-    /* text-align: center; */
+    text-indent: 1rem;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
@@ -35,6 +36,7 @@ const Input = styled.input`
     width: 100%;
     ::placeholder {
         text-align: center;
+        text-indent: -0.1rem;
     }
 `
 
@@ -54,38 +56,9 @@ const Button = styled.button`
     outline: 0;
 `
 
-const Info = styled.div`
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    font-size: 14px;
-    margin: 1rem 0 0;
-`
-
-const Check = styled.input`
-    position: absolute;
-    border: 0;
-    height: 20px;
-    width: 20px;
-    background-color: #eee;
-`
-
-const Title = styled.p`
-    margin: 0 0 0 1.5rem;
-    color: rgb(112, 112, 112);
-`
-
-const Link = styled.a`
-    color: rgb(112, 112, 112);
-    text-decoration: none;
-    &:hover {
-        text-decoration: underline;
-    }
-`
-
 const Social = styled.div`
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: space-between;
     & p {
         margin: 0.5rem 0;
@@ -93,35 +66,23 @@ const Social = styled.div`
     }
 `
 
-const Signup = styled.div`
-    display: flex;
-    align-content: center;
-    justify-content: flex-start;
-    & p {
-        margin: 1rem 0;
-        color: rgb(112, 112, 112);
-    }
-    & a {
-        margin: 1rem 1.5rem;
-        color: #fff;
-        text-decoration: none;
-    }
-    & a:hover {
-        text-decoration: underline;
-    }
-`
-
 export default function Formin() {
     return (
         <Main>
             <Form>
-                <h1>Sign In</h1>
+                <h1>Sign Up</h1>
                 {/* <label>Email or phone number</label> */}
-                <Input type='email' align='left' placeholder='username' />
+                <Input type='email' align='left' placeholder='Username' />
                 <Input type='text' placeholder='Email' />
                 <Input type='password' placeholder='Password' />
                 <Input type='password' placeholder='Repeat Password' />
                 <Button>Sign Up</Button>
+                <Social>
+                    <div>
+                        <SocialIcon url='http://facebook.com/rvgallego' />
+                    </div>
+                    <p>Login with Facebook</p>
+                </Social>
             </Form>
         </Main>
     );
