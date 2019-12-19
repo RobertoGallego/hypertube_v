@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { SocialIcon } from 'react-social-icons';
+import useForm from "react-hook-form";
 
 const Main = styled.main`
     box-sizing: border-box;
@@ -37,6 +38,9 @@ const Input = styled.input`
     ::placeholder {
         text-align: center;
         text-indent: -0.1rem;
+    }
+    & p {
+        color: #fff;
     }
 `
 
@@ -113,22 +117,64 @@ const Signup = styled.div`
     }
 `
 
+const Alert = styled.p`
+    font-size: 0.8rem;
+    color: #E87C03;
+    margin: -1.3rem 0 1rem;
+`
+
 export default function Formin() {
+    const { handleSubmit, register, errors } = useForm();
+    const [rememberMe, setrememberMe] = useState(false);
+
+    const onSubmit = values => {
+        console.log(values);
+    };
+    console.log(rememberMe);
+
     return (
         <Main>
-            <Form>
+            <Form onSubmit={e => e.preventDefault()}>
                 <h1>Sign In</h1>
                 {/* <label>Email or phone number</label> */}
-                <Input type='text' placeholder='Email or username' />
-                <Input type='password' placeholder='Password' />
+                <Input
+                    name='email'
+                    type='text'
+                    placeholder='Email'
+                    ref={register({
+                        required: '* Required',
+                        pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                            message: "Please enter a valid email.",
+                            required: true,
+                            maxLength: 50 }})}
+                />
+                {errors.email && <Alert>{errors.email.message}</Alert>}
+                <Input 
+                    name='password'
+                    type='password'
+                    placeholder='Password'
+                    ref={register({
+                        required: "You must specify a password",
+                        minLength: {
+                          value: 6,
+                          message: "Password must have at least 6 characters",
+                          required: true }})}
+                />
+                {errors.password && <Alert>{errors.password.message}</Alert>}
                 <Info>
                     <label>
-                        <Check type='checkbox' />
+                        <Check 
+                            type='checkbox'
+                            name='remember me'
+                            // isChecked={rememberMe}
+                            onChange={() => setrememberMe(!rememberMe)}
+                        />
                         <Title>Remember me</Title>
                     </label>
                     <Link href='/#'>Need help?</Link>
                 </Info>
-                <Button>Sign In</Button>
+                <Button type="submit" onClick={handleSubmit(onSubmit)}>Sign In</Button>
             </Form>
             <Social>
                 <div>

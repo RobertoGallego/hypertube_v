@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { SocialIcon } from 'react-social-icons';
+import useForm from "react-hook-form";
 
 const Main = styled.main`
     box-sizing: border-box;
@@ -51,7 +52,7 @@ const Button = styled.button`
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 1rem 0 8rem;
+    margin: 1rem 0 5rem;
     cursor: pointer;
     outline: 0;
 `
@@ -66,17 +67,79 @@ const Social = styled.div`
     }
 `
 
+const Alert = styled.p`
+    font-size: 0.8rem;
+    color: #E87C03;
+    margin: -1.3rem 0 1rem;
+`
+
 export default function Formin() {
+    const { handleSubmit, register, errors, watch } = useForm();
+    const password = useRef({});
+    password.current = watch("password", "");
+    const onSubmit = values => {
+        console.log(values);
+    };
+    
+    // const onSubmit = async data => {
+    // alert(JSON.stringify(data));
+    // };
+
     return (
         <Main>
-            <Form>
+            <Form onSubmit={e => e.preventDefault()}>
                 <h1>Sign Up</h1>
                 {/* <label>Email or phone number</label> */}
-                <Input type='email' align='left' placeholder='Username' />
-                <Input type='text' placeholder='Email' />
-                <Input type='password' placeholder='Password' />
-                <Input type='password' placeholder='Repeat Password' />
-                <Button>Sign Up</Button>
+                <Input 
+                    name='username'
+                    type='text'
+                    placeholder='Username'
+                    maxLength = "25"
+                    ref={register({
+                        required: '* Required',
+                        pattern: {
+                            value: /^[a-zA-Z0-9]([._](?![._])|[a-zA-Z0-9]){2,15}[a-zA-Z0-9]/,
+                            message: "Please enter a valid username.",
+                            required: true }})}
+                />
+                {errors.username && <Alert>{errors.username.message}</Alert>}
+                <Input
+                    name='email'
+                    type='text'
+                    placeholder='Email'
+                    ref={register({
+                        required: '* Required',
+                        pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                            message: "Please enter a valid email.",
+                            required: true,
+                            maxLength: 50 }})}
+                />
+                {errors.email && <Alert>{errors.email.message}</Alert>}
+                
+                <Input 
+                    name='password'
+                    type='password'
+                    placeholder='Password'
+                    ref={register({
+                        required: "You must specify a password",
+                        minLength: {
+                          value: 6,
+                          message: "Password must have at least 6 characters",
+                          required: true,
+                          maxLength: 25 }})}
+                />
+                {errors.password && <Alert>{errors.password.message}</Alert>}
+                <Input 
+                    name='re-password' 
+                    type='password' 
+                    placeholder='Repeat Password'
+                    ref={register({
+                        validate: value =>
+                          value === password.current || "The passwords do not match" })}
+                />
+                {errors.re-password && <Alert>{errors.re-password.message}</Alert>}
+                <Button type="submit" onClick={handleSubmit(onSubmit)}>Sign Up</Button>
                 <Social>
                     <div>
                         <SocialIcon url='http://facebook.com/rvgallego' />
