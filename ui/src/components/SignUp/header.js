@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Img = styled.img`
-    width: 15%;
     margin: 1rem 2rem;
 `;
 
