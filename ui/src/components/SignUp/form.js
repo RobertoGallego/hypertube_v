@@ -131,14 +131,14 @@ export default function Formin() {
                 />
                 {errors.password && <Alert>{errors.password.message}</Alert>}
                 <Input 
-                    name='re-password' 
+                    name='repassword' 
                     type='password' 
                     placeholder='Repeat Password'
                     ref={register({
                         validate: value =>
                           value === password.current || "The passwords do not match" })}
                 />
-                {errors.re-password && <Alert>{errors.re-password.message}</Alert>}
+                {errors.repassword && <Alert>{errors.repassword.message}</Alert>}
                 <Button type="submit" onClick={handleSubmit(onSubmit)}>Sign Up</Button>
                 <Social>
                     <div>
