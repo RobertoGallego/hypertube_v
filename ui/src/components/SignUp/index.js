@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Header from './header';
 import Formin from './form';
 import Footer from './footer';
-import background from '../../img/background.jpg';
+import background from '../../assets/images/background.jpg';
 
 const Signin = styled.div`
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),

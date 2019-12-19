@@ -1,5 +1,5 @@
 import React from 'react';
-import logoTop from '../../img/logo-top.png';
+import logoTop from '../../assets/images/logo-top.png';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
